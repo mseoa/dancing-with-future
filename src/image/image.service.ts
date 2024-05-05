@@ -24,8 +24,9 @@ export class ImageService {
     await this.image.findAllByUserId(userId);
   }
 
-  findUserImage(userId: number, imageId: number) {
-    return this.image.findUserImage(userId, imageId);
+  async findUserImage(userId: number, imageId: number) {
+    const image = await this.image.findUserImage(userId, imageId);
+    return new ImageEntity(image);
   }
 
   findAll() {

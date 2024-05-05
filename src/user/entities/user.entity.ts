@@ -36,7 +36,9 @@ export class UserEntity implements User {
     type: String, // 데이터 타입 지정
     format: 'date-time', // 날짜와 시간 형식 지정
   })
-  @Transform(({ value }) => moment(value).format('YYYY-MM-DD HH:mm:ss'))
+  @Transform(({ value }) =>
+    moment(value).tz('Asia/Seoul').format('YYYY-MM-DD HH:mm:ss'),
+  )
   createdAt: Date;
 
   @ApiProperty({
@@ -45,7 +47,9 @@ export class UserEntity implements User {
     type: String, // 데이터 타입 지정
     format: 'date-time', // 날짜와 시간 형식 지정
   })
-  @Transform(({ value }) => moment(value).format('YYYY-MM-DD HH:mm:ss'))
+  @Transform(({ value }) =>
+    moment(value).tz('Asia/Seoul').format('YYYY-MM-DD HH:mm:ss'),
+  )
   updatedAt: Date;
 
   @ApiProperty()

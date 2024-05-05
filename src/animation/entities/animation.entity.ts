@@ -14,11 +14,15 @@ export class AnimationEntity implements Animation {
   url: string;
 
   @ApiProperty()
-  @Transform(({ value }) => moment(value).format('YYYY-MM-DD HH:mm:ss'))
+  @Transform(({ value }) =>
+    moment(value).tz('Asia/Seoul').format('YYYY-MM-DD HH:mm:ss'),
+  )
   createdAt: Date;
 
   @ApiProperty()
-  @Transform(({ value }) => moment(value).format('YYYY-MM-DD HH:mm:ss'))
+  @Transform(({ value }) =>
+    moment(value).tz('Asia/Seoul').format('YYYY-MM-DD HH:mm:ss'),
+  )
   updatedAt: Date;
 
   constructor(entity: Animation) {

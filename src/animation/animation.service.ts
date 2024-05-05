@@ -16,12 +16,16 @@ export class AnimationService {
     const key = `animations/${file.fieldname}${Date.now()}`;
     const imageUrl = await this.s3Service.uploadFile(file, key);
 
-    const image = await this.animation.create({ userId, url: imageUrl });
-    return new AnimationEntity(image);
+    const animation = await this.animation.create({ userId, url: imageUrl });
+    return new AnimationEntity(animation);
   }
 
-  findUserAnimation(userId: number, animationId: number) {
-    return this.animation.findUserAnimation(userId, animationId);
+  async findUserAnimation(userId: number, animationId: number) {
+    const animation = await this.animation.findUserAnimation(
+      userId,
+      animationId,
+    );
+    return new AnimationEntity(animation);
   }
 
   findAll() {
